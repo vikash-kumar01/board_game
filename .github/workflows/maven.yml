@@ -25,4 +25,5 @@ jobs:
         version: v0.57.1
     - name: Trivy File System Scan
       run: |
-         trivy fs --format table -o fs.html .
+         trivy fs --scanners vuln --format table -o fs.html .
+
