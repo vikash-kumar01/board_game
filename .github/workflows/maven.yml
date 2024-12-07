@@ -17,4 +17,12 @@ jobs:
         distribution: 'temurin'
         ache: maven
     - name: Build with Maven
-      run: mvn clean package
+      run: mvn clean package    
+    - name: Manual Trivy Setup
+      uses: aquasecurity/setup-trivy@v0.2.0
+      with:
+        cache: true
+        version: v0.57.1
+    - name: Trivy File System Scan
+      run: |
+         trivy fs --format table -o fs.html .
